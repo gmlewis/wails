@@ -63,6 +63,7 @@ func (a *App) changeLanguage(data *menu.CallbackData) {
 	}
 	a.language = data.MenuItem.Label
 
+	// Even if all three of these lines are commented out, the behavior is the same!
 	a.appMenu.Items[0].Label = fmt.Sprintf("File - %v", a.language)
 	a.fileMenu.Items[0].Label = fmt.Sprintf("Language - %v", a.language)
 	a.fileMenu.Items[2].Label = fmt.Sprintf("Quit - %v", a.language)
