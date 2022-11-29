@@ -1,5 +1,16 @@
 # README
 
+This example demonstrates an issue on Linux with the following commands:
+
+* runtime.MenuSetApplicationMenu(a.ctx, a.appMenu)  // crashes on Linux
+  To duplicate the crash, first select File => Language => B
+  Note that the menus did not change.
+  Then select File => Language => C
+  This causes a crash in linux.handleMenuItemClick in the file
+  `internal/frontend/desktop/linux/gtk.go` (line 51) because the gtkWidget (item) is `nil`.
+* runtime.MenuUpdateApplicationMenu(a.ctx)  // ignored on Linux
+  No matter what language is chosen, the call is always ignored.
+
 ## About
 
 This is the official Wails Vanilla template.
